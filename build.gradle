@@ -20,6 +20,7 @@ buildscript {
         espressoVersion = "3.4.0"
         fragmentVersion = '1.4.1'
         hiltVersion = "2.41"
+        immersionbarVersion = "3.2.2"
         junitVersion = "4.13.2"
         ktxVersion = "1.7.0"
         lifecycleVersion = "2.4.1"

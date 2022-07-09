@@ -81,6 +81,10 @@ dependencies {
     //头条屏幕适配方案
     implementation "com.github.JessYanCoding:AndroidAutoSize:$rootProject.autoSizeVersion"
 
+    //沉浸式
+    implementation "com.geyifeng.immersionbar:immersionbar:$rootProject.immersionbarVersion"
+    implementation "com.geyifeng.immersionbar:immersionbar-ktx:$rootProject.immersionbarVersion"
+
     //权限申请
     implementation "com.guolindev.permissionx:permissionx:$rootProject.permissionxVersion"
 

@@ -1,9 +1,9 @@
-package com.example.utils
+package com.example.oms_android.utilities
 
 import android.view.View
-import com.example.utils.ViewClickDelay.SPACE_TIME
-import com.example.utils.ViewClickDelay.hash
-import com.example.utils.ViewClickDelay.lastClickTime
+import com.example.oms_android.utilities.ViewClickDelay.SPACE_TIME
+import com.example.oms_android.utilities.ViewClickDelay.hash
+import com.example.oms_android.utilities.ViewClickDelay.lastClickTime
 
 object ViewClickDelay {
     var hash: Int = 0

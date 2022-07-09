@@ -1,26 +1,14 @@
-package com.eohi.haixin.utils
+package com.example.oms_android.utilities
 
-import android.app.Dialog
-import android.content.Context
-import android.view.Gravity
-import android.view.ViewGroup
-import android.view.Window
-import android.widget.FrameLayout
-import android.widget.TextView
-import com.bigkoo.pickerview.builder.TimePickerBuilder
-import com.eohi.haixin.utils.Extensions.showShortToast
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-/**
- * Created by wangzl on 2019/6/20.
- */
-object DateUtil {
-    private const val DATE_FORMATE_YY_MM_DD_HH_MM = "yyyy.MM.dd HH:mm"
-    private const val DATE_FORMAT_YEAR_MONTH_DATE = "yyyy-MM-dd"
+private const val DATE_FORMAT_YY_MM_DD_HH_MM = "yyyy.MM.dd HH:mm"
+private const val DATE_FORMAT_YEAR_MONTH_DATE = "yyyy-MM-dd"
+private const val FORMAT_DATETIME = "yyyy-MM-dd HH:mm:ss"
 
-    private const val FORMAT_DATETIME = "yyyy-MM-dd HH:mm:ss"
+object DateUtil {
 
     fun compareTime(startDate: Date?, endDate: Date?): Boolean? {
         return startDate?.before(endDate)
@@ -36,11 +24,10 @@ object DateUtil {
         return df.format(date)
     }
 
-
     //"yyyy-MM-dd'T'HH:mm:ss.SSS"
     val dataTime: String
         get() {
-            val df = SimpleDateFormat(DATE_FORMATE_YY_MM_DD_HH_MM)
+            val df = SimpleDateFormat(DATE_FORMAT_YY_MM_DD_HH_MM)
             return df.format(Date())
         }
 
@@ -50,6 +37,7 @@ object DateUtil {
             return df.format(Date())
         }
 
+    //获取当前时间格式为“yyyy-MM-dd HH:mm:ss”
     val audioTime: String
         get() {
             val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
@@ -110,139 +98,5 @@ object DateUtil {
             calendar[Calendar.SECOND] = calendar[Calendar.SECOND] - 604800
             return dateFormat.format(calendar.time)
         }
-
-    fun chooseStartDate(
-        context: Context,
-        container: TextView,
-        startDate: Date?,
-        endDate: Date?
-    ): Date? {
-        var chooseDate: Date? = null
-        val timePickerView = TimePickerBuilder(
-            context
-        ) { date, _ ->
-            if (startDate == null || endDate == null || compareTime(
-                    startDate,
-                    endDate
-                )!!
-            ) {
-                chooseDate = date
-                container.text = formatDateTime(date)
-            } else {
-                context.showShortToast("结束时间不能早于开始时间")
-            }
-        }.setType(booleanArrayOf(true, true, true, true, true, true))//分别对应年月日时分秒，默认全部显示
-            .isDialog(true)
-            .setCancelText("取消")
-            .setSubmitText("确定")
-            .build()
-
-        val mDialog: Dialog = timePickerView.dialog
-        val params: FrameLayout.LayoutParams = FrameLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            Gravity.BOTTOM
-        )
-        params.leftMargin = 20
-        params.rightMargin = 20
-        timePickerView.dialogContainerLayout.layoutParams = params
-        val dialogWindow: Window? = mDialog.window
-        if (dialogWindow != null) {
-            dialogWindow.setWindowAnimations(com.bigkoo.pickerview.R.style.picker_view_slide_anim) //修改动画样式
-            dialogWindow.setGravity(Gravity.CENTER) //改成Bottom,底部显示
-        }
-        timePickerView.show()
-        return chooseDate
-    }
-
-    fun chooseEndDate(
-        context: Context,
-        container: TextView,
-        startDate: Date?,
-        endDate: Date?
-    ): Date? {
-        var chooseDate: Date? = null
-        val timePickerView = TimePickerBuilder(
-            context
-        ) { date, _ ->
-            if (startDate == null || endDate == null || compareTime(
-                    startDate,
-                    endDate
-                )!!
-            ) {
-                chooseDate = date
-                container.text = formatDateTime(date)
-            } else {
-                context.showShortToast("结束时间不能早于开始时间")
-            }
-        }.setType(booleanArrayOf(true, true, true, true, true, true))//分别对应年月日时分秒，默认全部显示
-            .isDialog(true)
-            .setCancelText("取消")
-            .setSubmitText("确定")
-            .build()
-
-        val mDialog: Dialog = timePickerView.dialog
-        val params: FrameLayout.LayoutParams = FrameLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            Gravity.BOTTOM
-        )
-        params.leftMargin = 20
-        params.rightMargin = 20
-        timePickerView.dialogContainerLayout.layoutParams = params
-        val dialogWindow: Window? = mDialog.window
-        if (dialogWindow != null) {
-            dialogWindow.setWindowAnimations(com.bigkoo.pickerview.R.style.picker_view_slide_anim) //修改动画样式
-            dialogWindow.setGravity(Gravity.CENTER) //改成Bottom,底部显示
-        }
-        timePickerView.show()
-        return chooseDate
-    }
-
-
-    fun chooseDate(
-        context: Context,
-        container: TextView,
-        startDate: Date?,
-        endDate: Date?
-    ): Date? {
-        var chooseDate: Date? = null
-        val timePickerView = TimePickerBuilder(
-            context
-        ) { date, _ ->
-            if (startDate == null || endDate == null || compareTime(
-                    startDate,
-                    endDate
-                )!!
-            ) {
-                chooseDate = date
-                container.text = formatDate(date)
-            } else {
-                context.showShortToast("结束时间不能早于开始时间")
-            }
-        }.setType(booleanArrayOf(true, true, true, false, false, false))//分别对应年月日时分秒，默认全部显示
-            .isDialog(true)
-            .setCancelText("取消")
-            .setSubmitText("确定")
-            .build()
-
-        val mDialog: Dialog = timePickerView.dialog
-        val params: FrameLayout.LayoutParams = FrameLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            Gravity.BOTTOM
-        )
-        params.leftMargin = 20
-        params.rightMargin = 20
-        timePickerView.dialogContainerLayout.layoutParams = params
-        val dialogWindow: Window? = mDialog.window
-        if (dialogWindow != null) {
-            dialogWindow.setWindowAnimations(com.bigkoo.pickerview.R.style.picker_view_slide_anim) //修改动画样式
-            dialogWindow.setGravity(Gravity.CENTER) //改成Bottom,底部显示
-        }
-        timePickerView.show()
-        return chooseDate
-    }
-
 
 }

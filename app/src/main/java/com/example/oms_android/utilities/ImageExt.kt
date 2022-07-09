@@ -1,7 +1,7 @@
 @file:JvmName("ImageExt")
 @file:Suppress("unused")
 
-package com.example.utils
+package com.example.oms_android.utilities
 
 import android.content.*
 import android.graphics.Bitmap
