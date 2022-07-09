@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">oms-android</string>
+    <string name="loading">Loading...</string>
+</resources>
