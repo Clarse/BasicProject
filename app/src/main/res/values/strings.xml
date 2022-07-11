@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">oms-android</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
+    <string name="document">单据</string>
+    <string name="report">报表</string>
+    <string name="mine">我的</string>
 </resources>

@@ -38,6 +38,7 @@
             android:value="portrait|landscape" />
 
         <activity
+            android:theme="@style/Theme.Omsandroid.NoActionBar"
             android:name=".main.MainActivity"
             android:exported="true">
             <intent-filter>

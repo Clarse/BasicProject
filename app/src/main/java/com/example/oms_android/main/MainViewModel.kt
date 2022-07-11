@@ -8,6 +8,4 @@ import com.example.oms_android.base.BaseViewModel
  */
 class MainViewModel : BaseViewModel() {
 
-
-
 }
