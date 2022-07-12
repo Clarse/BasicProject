@@ -9,14 +9,14 @@ import com.example.oms_android.databinding.FragmentReportBinding
  */
 class ReportFragment:BaseFragment<FragmentReportBinding,ReportViewModel>() {
     override fun initView() {
-        TODO("Not yet implemented")
+
     }
 
     override fun initViewStates() {
-        TODO("Not yet implemented")
+
     }
 
     override fun initViewEvents() {
-        TODO("Not yet implemented")
+
     }
 }

@@ -9,14 +9,14 @@ import com.example.oms_android.databinding.FragmentMineBinding
  */
 class MineFragment:BaseFragment<FragmentMineBinding,MineViewModel>() {
     override fun initView() {
-        TODO("Not yet implemented")
+
     }
 
     override fun initViewStates() {
-        TODO("Not yet implemented")
+
     }
 
     override fun initViewEvents() {
-        TODO("Not yet implemented")
+
     }
 }

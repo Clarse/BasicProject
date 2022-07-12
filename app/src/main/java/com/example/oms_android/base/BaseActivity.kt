@@ -9,8 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.example.oms_android.netstate.NetWorkListenerHelper
 import com.example.oms_android.netstate.NetworkStatus
+import com.example.oms_android.utilities.LogUtils
 import com.tencent.mmkv.MMKV
 import java.lang.reflect.ParameterizedType
+
+private val TAG = BaseActivity::class.java.simpleName
 
 abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivity(),
     NetWorkListenerHelper.NetWorkConnectedListener {
@@ -23,6 +26,7 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
     @Suppress("UNCHECKED_CAST")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        LogUtils.d(TAG, "${this.javaClass.simpleName}:onCreate()")
         val type = javaClass.genericSuperclass as ParameterizedType
 
         val clazz0 = type.actualTypeArguments[0] as Class<VB>
@@ -44,14 +48,35 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
         initViewEvents()
     }
 
-    abstract fun initView()
-    abstract fun initViewStates()
-    abstract fun initViewEvents()
+    override fun onStart() {
+        super.onStart()
+        LogUtils.d(TAG, "${this.javaClass.simpleName}:onStart()")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LogUtils.d(TAG, "${this.javaClass.simpleName}:onResume()")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        LogUtils.d(TAG, "${this.javaClass.simpleName}:onPause()")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        LogUtils.d(TAG, "${this.javaClass.simpleName}:onStop()")
+    }
 
     override fun onDestroy() {
         super.onDestroy()
+        LogUtils.d(TAG, "${this.javaClass.simpleName}:onDestroy()")
         NetWorkListenerHelper.obtain().removeListener(this)
     }
+
+    abstract fun initView()
+    abstract fun initViewStates()
+    abstract fun initViewEvents()
 
     override fun onNetWorkConnected(isConnected: Boolean, networkStatus: NetworkStatus) {
         if (isConnected) {
