@@ -2,7 +2,7 @@
 <resources>
 
     <!-- To see how these attributes are used, please visit https://material.io/develop/android/theming/color/ -->
-    <style name="Base.Theme.Omsandroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Base.Theme.Omsandroid" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="colorPrimary">@color/sunflower_green_500</item>
         <item name="colorPrimaryVariant">@color/sunflower_green_700</item>
         <item name="colorOnPrimary">@color/sunflower_yellow_500</item>
@@ -11,7 +11,7 @@
         <item name="colorAccent">@color/sunflower_green_700</item>
         <item name="colorSurface">@color/sunflower_gray_50</item>
         <item name="colorSecondary">@color/sunflower_yellow_500</item>
-        <item name="android:colorBackground">@color/sunflower_green_500</item>
+        <item name="android:colorBackground">@color/sunflower_white</item>
     </style>
 
     <style name="Theme.Omsandroid" parent="Base.Theme.Omsandroid"/>
@@ -22,7 +22,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="windowActionBarOverlay">true</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Sunflower.FAB</item>
+<!--        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Sunflower.FAB</item>-->
     </style>
 
     <style name="Theme.Omsandroid.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>

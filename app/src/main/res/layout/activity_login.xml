@@ -1,56 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/state"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        tools:ignore="UselessParent">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/edit_user_name"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:autofillHints=""
-            android:hint="请输入用户名"
-            android:inputType="text"
-            android:textSize="16sp"
-            tools:ignore="HardcodedText" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="120dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            tools:ignore="UselessParent">
 
-        <EditText
-            android:id="@+id/edit_password"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
-            android:autofillHints=""
-            android:hint="请输入密码"
-            android:inputType="textPassword"
-            android:textSize="16sp"
-            tools:ignore="HardcodedText" />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_android_black_24dp" />
 
-        <TextView
-            android:id="@+id/tv_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="密码必须大于6位数"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="12sp"
-            tools:ignore="HardcodedText" />
+            <com.google.android.material.textfield.TextInputLayout
+                app:endIconMode="clear_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
 
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="32dp"
-            android:text="登录"
-            tools:ignore="HardcodedText" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_user_name"
+                    style="@style/TextAppearance.Material3.LabelMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_please_input_username"
+                    android:inputType="text"
+                    tools:ignore="HardcodedText" />
 
-    </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_password"
+                    style="@style/TextAppearance.Material3.LabelMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_please_input_password"
+                    android:inputType="textPassword"
+                    tools:ignore="HardcodedText" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_label"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/text_password_remind"
+                android:textColor="@android:color/holo_red_dark"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_login"
+                style="Widget.Material3.Button.TextButton.Dialog.FullWidth"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/text_login"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/check_remember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/text_remember_password" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

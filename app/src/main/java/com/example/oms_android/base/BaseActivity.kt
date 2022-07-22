@@ -9,11 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.example.oms_android.netstate.NetWorkListenerHelper
 import com.example.oms_android.netstate.NetworkStatus
+import com.example.oms_android.utilities.ActivityManager
 import com.example.oms_android.utilities.LogUtils
 import com.tencent.mmkv.MMKV
 import java.lang.reflect.ParameterizedType
-
-private val TAG = BaseActivity::class.java.simpleName
 
 abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivity(),
     NetWorkListenerHelper.NetWorkConnectedListener {
@@ -22,6 +21,10 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
     lateinit var vb: VB
     lateinit var vm: VM
     lateinit var mmkv: MMKV
+
+    companion object {
+        private val TAG = BaseActivity::class.java.simpleName
+    }
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +44,10 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
 
         setContentView(vb.root)
         mContext = this
+
+        //添加activity栈
+        ActivityManager.getInstance().addActivity(this)
+
         NetWorkListenerHelper.obtain().addListener(this)
         mmkv = MMKV.defaultMMKV()
         initView()
@@ -72,6 +79,8 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
         super.onDestroy()
         LogUtils.d(TAG, "${this.javaClass.simpleName}:onDestroy()")
         NetWorkListenerHelper.obtain().removeListener(this)
+        //移除activity栈
+        ActivityManager.getInstance().deleteActivity(this)
     }
 
     abstract fun initView()

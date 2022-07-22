@@ -18,14 +18,15 @@ import java.lang.reflect.ParameterizedType
  * @author: Clarse
  * @date: 2022/7/11
  */
-
-private val TAG = BaseFragment::class.java.simpleName
-
 abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> : Fragment(),
     NetWorkListenerHelper.NetWorkConnectedListener {
 
     lateinit var vb: VB
     lateinit var vm: VM
+
+    companion object {
+        private val TAG = BaseFragment::class.java.simpleName
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

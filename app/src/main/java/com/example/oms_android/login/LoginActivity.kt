@@ -1,17 +1,18 @@
 package com.example.oms_android.login
 
-import android.app.AlertDialog
-import android.content.Context
-import android.graphics.drawable.ColorDrawable
+import android.content.Intent
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
+import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import com.example.oms_android.R
 import com.example.oms_android.base.BaseActivity
 import com.example.oms_android.databinding.ActivityLoginBinding
+import com.example.oms_android.notification.NotificationActivity
 import com.example.oms_android.utilities.toast
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.zj.mvi.core.observeEvent
 import com.zj.mvi.core.observeState
 
@@ -20,6 +21,33 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     private lateinit var dialog: AlertDialog
 
     override fun initView() {
+//        PermissionX.init(this)
+//            .permissions(Manifest.permission.CAMERA)
+//            .explainReasonBeforeRequest()
+//            .onExplainRequestReason { scope, deniedList ->
+//                scope.showRequestReasonDialog(
+//                    deniedList,
+//                    getString(R.string.permission_reason),
+//                    getString(R.string.text_ok),
+//                    getString(R.string.text_cancel)
+//                )
+//            }
+//            .onForwardToSettings { scope, deniedList ->
+//                scope.showForwardToSettingsDialog(
+//                    deniedList,
+//                    getString(R.string.permission_setting),
+//                    getString(R.string.text_ok),
+//                    getString(R.string.text_cancel)
+//                )
+//            }
+//            .request { allGranted, grantedList, deniedList ->
+//                if (allGranted) {
+//                    toast(getString(R.string.permission_granted))
+//                } else {
+//                    toast("These permissions are denied: $deniedList")
+//                }
+//            }
+
         vb.editUserName.addTextChangedListener {
             vm.dispatch(LoginViewAction.UpdateUserName(it.toString()))
         }
@@ -57,33 +85,32 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 is LoginViewEvent.ShowToast -> toast(it.message)
                 is LoginViewEvent.ShowLoadingDialog -> showLoadingDialog()
                 is LoginViewEvent.DismissLoadingDialog -> dismissLoadingDialog()
+                is LoginViewEvent.LoginSuccess -> startActivity(
+                    Intent(
+                        this,
+                        NotificationActivity::class.java
+                    )
+                )
             }
         }
     }
 
     private fun showLoadingDialog() {
-        progressDialog(this)
+        val view = LayoutInflater.from(this).inflate(R.layout.progress_dialog, null)
+        dialog = MaterialAlertDialogBuilder(this).setView(view).create()
+        dialog.setCancelable(false)
+        dialog.window?.let {
+            val layoutParams = it.attributes
+            layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
+            it.attributes = layoutParams
+            it.setGravity(Gravity.CENTER)
+        }
+        dialog.show()
     }
 
     private fun dismissLoadingDialog() {
         dialog.takeIf { it.isShowing }?.dismiss()
-    }
-
-    private fun progressDialog(context: Context) {
-        val view = LayoutInflater.from(context).inflate(R.layout.progress_dialog, null)
-        dialog = AlertDialog.Builder(context).create()
-        dialog.show()
-        dialog.setCancelable(false)
-        dialog.window?.let {
-            it.decorView.setPadding(0, 0, 0, 0)
-            val layoutParams = it.attributes
-            layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
-            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
-            it.attributes = layoutParams
-            it.setBackgroundDrawable(ColorDrawable(0))
-            it.setContentView(view)
-            it.setGravity(Gravity.CENTER)
-        }
     }
 
 }

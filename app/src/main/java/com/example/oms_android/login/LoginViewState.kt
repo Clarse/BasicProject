@@ -9,6 +9,7 @@ sealed class LoginViewEvent {
     data class ShowToast(val message: String) : LoginViewEvent()
     object ShowLoadingDialog : LoginViewEvent()
     object DismissLoadingDialog : LoginViewEvent()
+    object LoginSuccess : LoginViewEvent()
 }
 
 sealed class LoginViewAction {

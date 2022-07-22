@@ -11,12 +11,13 @@ import com.example.oms_android.utilities.LogUtils
  * @author: Clarse
  * @date: 2022/7/8
  */
-
-private val TAG = NetworkBroadcastReceiver::class.java.simpleName
-
 class NetworkBroadcastReceiver : BroadcastReceiver() {
 
     private var mBroadcastCallback: NetworkBroadcastCallback? = null
+
+    companion object {
+        private val TAG = NetworkBroadcastReceiver::class.java.simpleName
+    }
 
     override fun onReceive(context: Context?, intent: Intent?) {
         if (null == intent || null == intent.action) {

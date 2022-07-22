@@ -1,17 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">oms-android</string>
-    <string name="text_loading">加载中...</string>
-    <string name="text_document">单据</string>
-    <string name="text_report">报表</string>
     <string name="text_mine">我的</string>
     <string name="text_permission_reason">核心功能需要这些权限</string>
+    <string name="text_report">报表</string>
+    <string name="text_loading">加载中...</string>
+    <string name="text_document">单据</string>
     <string name="text_ok">确定</string>
     <string name="text_cancel">取消</string>
     <string name="text_permission_setting">需要去设置中开启权限</string>
     <string name="text_permission_granted">所有权限都已授权</string>
     <string name="text_remember_password">记住我</string>
     <string name="text_login">登录</string>
-    <string name="text_password_remind">密码必须大于6位数</string>
     <string name="text_please_input_username">请输入用户名</string>
     <string name="text_please_input_password">请输入密码</string>
+    <string name="text_password_remind">密码必须大于6位数</string>
 </resources>

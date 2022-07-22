@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">oms-android</string>
+    <string name="text_permission_reason">Core fundamental are based on these permissions</string>
+    <string name="text_report">report</string>
+    <string name="text_mine">mine</string>
+    <string name="text_document">document</string>
+    <string name="text_loading">loading...</string>
+    <string name="text_ok">OK</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_permission_setting">You need to allow necessary permissions in Settings manually</string>
+    <string name="text_permission_granted">All permissions are granted</string>
+    <string name="text_remember_password">remember me</string>
+    <string name="text_login">login</string>
+    <string name="text_please_input_username">please input username</string>
+    <string name="text_please_input_password">please input password</string>
+    <string name="text_password_remind">password length must over six</string>
+</resources>

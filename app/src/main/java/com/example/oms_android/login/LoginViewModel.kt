@@ -40,7 +40,9 @@ class LoginViewModel : BaseViewModel() {
                 _viewEvents.setEvent(
                     LoginViewEvent.DismissLoadingDialog, LoginViewEvent.ShowToast("登录失败")
                 )
-            }.collect()
+            }.collect {
+                _viewEvents.setEvent(LoginViewEvent.LoginSuccess)
+            }
         }
     }
 

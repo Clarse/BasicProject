@@ -24,7 +24,6 @@ object DateUtil {
         return df.format(date)
     }
 
-    //"yyyy-MM-dd'T'HH:mm:ss.SSS"
     val dataTime: String
         get() {
             val df = SimpleDateFormat(DATE_FORMAT_YY_MM_DD_HH_MM)
@@ -60,7 +59,7 @@ object DateUtil {
         return date
     }
 
-    fun beginEndtime(firstTime: Date): String {
+    fun beginEndTime(firstTime: Date): String {
         return getTime(Date(), firstTime)
     }
 

@@ -10,9 +10,6 @@ import java.util.concurrent.TimeUnit
  * @author: Clarse
  * @date: 2022/7/9
  */
-
-var base_url = "http://112.15.71.78:8081/xilinmen/app/"
-
 class RetrofitClient {
 
     private val mService by lazy { getInstance().create() }
@@ -27,6 +24,7 @@ class RetrofitClient {
 
     companion object {
         private lateinit var retrofit: Retrofit
+        var base_url = "http://112.15.71.78:8081/xilinmen/app/"
 
         @Volatile
         private var instance: RetrofitClient? = null

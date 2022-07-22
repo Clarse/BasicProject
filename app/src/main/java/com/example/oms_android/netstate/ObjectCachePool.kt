@@ -4,11 +4,10 @@ import com.example.oms_android.utilities.LogUtils
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
 
-private val TAG = ObjectCachePool::class.java.simpleName
-
 class ObjectCachePool {
 
     companion object {
+        private val TAG = ObjectCachePool::class.java.simpleName
         @Volatile
         private var instance: ObjectCachePool? = null
 

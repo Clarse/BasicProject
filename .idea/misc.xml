@@ -4,17 +4,25 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.293" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/drawable/ic_next.xml" value="0.2885" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/drawable/ic_play.xml" value="0.2885" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/drawable/ic_previous.xml" value="0.2885" />
         <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/drawable/tab_icon_color_selector.xml" value="0.293" />
-        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/activity_login.xml" value="0.3651041666666667" />
-        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/activity_main.xml" value="0.14606741573033707" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/activity_message.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/activity_notification.xml" value="0.2997007268063275" />
         <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/fragment_document.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/fragment_mine.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/fragment_report.xml" value="0.3651041666666667" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/layout_custom_notification.xml" value="0.2997007268063275" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/layout_custom_notification_big.xml" value="0.2997007268063275" />
         <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/layout_empty.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/layout_error.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/layout_loading.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/progress_dialog.xml" value="0.3651041666666667" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/layout/progress_dialog.xml" value="0.25" />
         <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/menu/menu_main.xml" value="0.3651041666666667" />
+        <entry key="..\:/Users/Clarse/Desktop/oms-android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2885" />
       </map>
     </option>
   </component>

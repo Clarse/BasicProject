@@ -7,6 +7,7 @@ import com.example.oms_android.R
 import com.example.oms_android.api.RetrofitClient
 import com.example.oms_android.netstate.NetWorkListenerHelper
 import com.example.oms_android.utilities.ACCESS_TOKEN
+import com.google.android.material.color.DynamicColors
 import com.tencent.mmkv.MMKV
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -29,6 +30,8 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        //Apply dynamic colors to all activities in the app
+        DynamicColors.applyToActivitiesIfAvailable(this)
         //初始化MMKV
         MMKV.initialize(this)
         //设置加载状态页面

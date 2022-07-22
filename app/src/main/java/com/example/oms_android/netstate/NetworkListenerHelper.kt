@@ -10,8 +10,6 @@ import android.os.Build
 import com.example.oms_android.utilities.LogUtils
 import java.util.concurrent.CopyOnWriteArrayList
 
-private val TAG = NetWorkListenerHelper::class.java.simpleName
-
 class NetWorkListenerHelper(context: Context) {
 
     @Volatile
@@ -19,6 +17,7 @@ class NetWorkListenerHelper(context: Context) {
     private val mContext = context.applicationContext
 
     companion object {
+        private val TAG = NetWorkListenerHelper::class.java.simpleName
 
         @Synchronized
         fun obtain(): NetWorkListenerHelper {

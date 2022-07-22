@@ -26,6 +26,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(),
                 vb.navView.menu.getItem(position).isChecked = true
             }
         })
+        val badge = vb.navView.getOrCreateBadge(R.id.navigation_mine)
+        badge.isVisible = true
+        badge.number = 99
     }
 
     override fun initViewStates() {
