@@ -26,26 +26,27 @@ class ActivityManager {
 
     fun addActivity(activity: Activity) {
         if (null == mActivityStack) {
-            mActivityStack = Stack()
+            mActivityStack = Stack<WeakReference<Activity>>()
         }
         mActivityStack?.add(WeakReference(activity))
     }
 
     fun deleteActivity(activity: Activity): Boolean {
         if (null != mActivityStack) {
-            val it = mActivityStack!!.iterator()
-            while (it.hasNext()) {
-                mActivityStack?.iterator()?.let {
-                    val temp = it.next().get()
-                    if (null == temp) {
-                        it.remove()
-                    }
-                    if (temp == activity) {
-                        it.remove()
-                        return true
-                    }
-                }
-            }
+            mActivityStack!!.remove(WeakReference(activity))
+//            val it = mActivityStack!!.iterator()
+//            while (it.hasNext()) {
+//                mActivityStack?.iterator()?.let {
+//                    val temp = it.next().get()
+//                    if (null == temp) {
+//                        it.remove()
+//                    }
+//                    if (temp == activity) {
+//                        it.remove()
+//                        return true
+//                    }
+//                }
+//            }
         }
         return false
     }

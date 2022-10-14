@@ -5,6 +5,6 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("login/get/token")
-    suspend fun getToken(): BaseResponseModel
+    suspend fun getToken(): BaseResponseModel<String>
 
 }

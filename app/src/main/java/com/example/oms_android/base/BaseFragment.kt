@@ -12,6 +12,7 @@ import androidx.viewbinding.ViewBinding
 import com.example.oms_android.netstate.NetWorkListenerHelper
 import com.example.oms_android.netstate.NetworkStatus
 import com.example.oms_android.utilities.LogUtils
+import com.example.oms_android.utilities.toast
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -103,7 +104,19 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> : Fragment(),
     abstract fun initViewEvents()
 
     override fun onNetWorkConnected(isConnected: Boolean, networkStatus: NetworkStatus) {
+        if (isConnected) {
+            when (networkStatus) {
+                NetworkStatus.MOBILE -> {
+                    activity?.toast("当前正在使用移动网络，请注意流量消耗")
+                }
+                NetworkStatus.WIFI -> {
 
+                }
+                else -> {
+
+                }
+            }
+        }
     }
 
 }

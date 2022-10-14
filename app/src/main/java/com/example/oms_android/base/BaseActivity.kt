@@ -1,6 +1,7 @@
 package com.example.oms_android.base
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -11,7 +12,9 @@ import com.example.oms_android.netstate.NetWorkListenerHelper
 import com.example.oms_android.netstate.NetworkStatus
 import com.example.oms_android.utilities.ActivityManager
 import com.example.oms_android.utilities.LogUtils
+import com.example.oms_android.utilities.toast
 import com.tencent.mmkv.MMKV
+import org.greenrobot.eventbus.EventBus
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivity(),
@@ -21,6 +24,7 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
     lateinit var vb: VB
     lateinit var vm: VM
     lateinit var mmkv: MMKV
+    private var time = 0L
 
     companion object {
         private val TAG = BaseActivity::class.java.simpleName
@@ -44,6 +48,8 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
 
         setContentView(vb.root)
         mContext = this
+
+        EventBus.getDefault().register(this)
 
         //添加activity栈
         ActivityManager.getInstance().addActivity(this)
@@ -79,6 +85,7 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
         super.onDestroy()
         LogUtils.d(TAG, "${this.javaClass.simpleName}:onDestroy()")
         NetWorkListenerHelper.obtain().removeListener(this)
+        EventBus.getDefault().unregister(this)
         //移除activity栈
         ActivityManager.getInstance().deleteActivity(this)
     }
@@ -89,13 +96,33 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
 
     override fun onNetWorkConnected(isConnected: Boolean, networkStatus: NetworkStatus) {
         if (isConnected) {
-            if (networkStatus == NetworkStatus.MOBILE) {
+            when (networkStatus) {
+                NetworkStatus.MOBILE -> {
+                    toast("当前正在使用移动网络，请注意流量消耗")
+                }
+                NetworkStatus.WIFI -> {
 
-            } else if (networkStatus == NetworkStatus.WIFI) {
+                }
+                else -> {
 
-            } else {
-
+                }
             }
+        }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit()
+        }
+        return true
+    }
+
+    private fun exit() {
+        if (System.currentTimeMillis() - time > 2000) {
+            time = System.currentTimeMillis()
+            toast("再按一次退出应用程序")
+        } else {
+            ActivityManager.getInstance().finishAllActivity()
         }
     }
 

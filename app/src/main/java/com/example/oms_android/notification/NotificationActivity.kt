@@ -260,6 +260,8 @@ class NotificationActivity : BaseActivity<ActivityNotificationBinding, BaseViewM
     //展示常驻通知
     private fun showPermanentNotification() {
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("title", "标题")
+        intent.putExtra("content", "内容")
         val pendingIntent = PendingIntent.getActivity(
             this,
             0,

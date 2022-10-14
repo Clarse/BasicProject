@@ -11,9 +11,9 @@ data class BaseResponseModel<T>(
     val data: T? = null,
     val success: String? = null
 ) {
-    fun getResult(): Result<T> {
+    fun getResult(): Result<T?> {
         return if (code == 0) {
-            Result.success(data!!)
+            Result.success(data)
         } else {
             Result.failure(Exception("$msg"))
         }

@@ -30,6 +30,7 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        instance = this
         //Apply dynamic colors to all activities in the app
         DynamicColors.applyToActivitiesIfAvailable(this)
         //初始化MMKV
@@ -44,19 +45,6 @@ class MyApplication : Application() {
         }
         //开启全局网络监听
         NetWorkListenerHelper.init(this).requestNetworkListener()
-        //获取并保存token
-        val defaultMMKV = MMKV.defaultMMKV()
-        if (defaultMMKV.decodeString(ACCESS_TOKEN, "") == "") {
-            runBlocking {
-                flow {
-                    emit(RetrofitClient.getInstance().getService().getToken())
-                }.flowOn(Dispatchers.IO).catch { e ->
-                    e.printStackTrace()
-                }.collect {
-                    defaultMMKV.encode(ACCESS_TOKEN, it.data?.token.toString())
-                }
-            }
-        }
     }
 
 }
